@@ -1,38 +1,39 @@
 .App {
-  text-align: center;
+  @apply flex h-screen min-h-[100vh] flex-col justify-between bg-neutral-50;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  @apply max-w-screen-xl px-4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main {
+  @apply flex-1 pb-24 pt-12;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header {
+  @apply border-b border-neutral-200 bg-white py-4;
+}
+header .container {
+  @apply flex items-center justify-center;
 }
 
-.App-link {
-  color: #61dafb;
+footer {
+  @apply bg-black py-4 text-center font-mono text-sm capitalize text-white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero_section {
+  @apply mb-12 max-w-screen-lg;
 }
+.hero_section .swiper {
+  @apply max-h-[480px];
+}
+.hero_section .swiper-slide {
+  @apply h-full;
+}
+.hero_section .swiper-slide img {
+  @apply h-full w-full object-cover;
+}
+
+.products_title {
+  @apply mb-4 text-center text-4xl font-bold;
+}/*# sourceMappingURL=App.css.map */
