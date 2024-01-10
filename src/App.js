@@ -6,7 +6,6 @@ import HeroSection from './components/HeroSection'
 import Products from './components/Products'
 
 function App() {
-
   return (
     <div className="App">
       <Header />

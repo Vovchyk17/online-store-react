@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
 
 export default () => {
-  //I need to fetch the data from the API https://fakestoreapi.com/products
-  //and store it in a state variable
   const [products, setProducts] = useState([])
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((json) => setProducts(json))
-  }, [products])
+  }, [])
 
   return (
     <div className="products">
@@ -20,6 +18,7 @@ export default () => {
             <div className="products_item" key={product.id}>
               <img src={product.image} alt={product.title} />
               <h3>{product.title}</h3>
+              <h4>{product.category}</h4>
               <p>{product.description}</p>
               <span>${product.price}</span>
               <button>Add to cart</button>
