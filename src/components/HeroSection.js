@@ -7,7 +7,7 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
 
-export default () => {
+export default function HeroSection() {
   const imagePaths = ['slide-1.jpg', 'slide-2.jpg', 'slide-3.jpg']
 
   return (
