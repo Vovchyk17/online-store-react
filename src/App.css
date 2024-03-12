@@ -68,6 +68,15 @@ footer {
 .products_item .flex {
   @apply flex-wrap items-center justify-between;
 }
+.products_load_more {
+  @apply mt-16 text-center;
+}
+.products_load_more button {
+  @apply bg-gray-800 text-lg font-bold;
+}
+.products_load_more button:hover {
+  @apply bg-blue-800;
+}
 
 .button {
   @apply inline-block rounded-lg bg-blue-800 px-4 py-2 text-sm text-white transition-all delay-0 duration-300 ease-in-out;

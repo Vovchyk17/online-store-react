@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <main>
+        <main className="flex-1 pb-24 pt-12">
           <Routes>
             <Route
               path="/"
