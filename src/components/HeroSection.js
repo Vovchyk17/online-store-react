@@ -11,18 +11,18 @@ export default function HeroSection() {
   const imagePaths = ['slide-1.jpg', 'slide-2.jpg', 'slide-3.jpg']
 
   return (
-    <div className="hero_section container mb-12 max-w-screen-lg">
+    <div className="hero_section mx-auto mb-12 max-w-screen-lg">
       <Swiper
-        className="max-h-[480px]"
+        className="h-[480px]"
         modules={[EffectFade, Autoplay]}
         effect="fade"
         slidesPerView={1}
         loop
         autoplay
-        speed={3000}
+        speed={200}
       >
         {imagePaths.map((imagePath, i) => (
-          <SwiperSlide key={`slide_${i}`} className="h-full">
+          <SwiperSlide key={`slide_${i}`}>
             <img
               src={require(`../img/${imagePath}`)}
               alt="slide"

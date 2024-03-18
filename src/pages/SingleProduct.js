@@ -24,7 +24,7 @@ export default function SingleProduct() {
   return (
     <div className="single_product">
       <div className="container max-w-screen-lg">
-        <div className="single_product__back mb-8">
+        <div className="mb-8">
           <a
             href="/"
             className="flex items-center justify-start text-lg font-bold hover:text-blue-800"
