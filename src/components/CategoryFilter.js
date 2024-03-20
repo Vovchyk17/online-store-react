@@ -4,11 +4,17 @@ export default function CategoryFilter({
   selectedCategory,
 }) {
   return (
-    <div className="category-filter mb-8">
+    <div className="category-filter flex items-center justify-start gap-4">
+      <button
+        className={`button ${selectedCategory === null ? 'selected' : ''}`}
+        onClick={() => handleCategoryClick(null)}
+      >
+        All
+      </button>
       {categories.map((category) => (
         <button
           key={category.id}
-          className={`button mr-4 ${
+          className={`button ${
             category === selectedCategory ? 'selected' : ''
           }`}
           onClick={() => handleCategoryClick(category)}
