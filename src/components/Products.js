@@ -5,12 +5,12 @@ import LoadMore from './LoadMore'
 import Search from './Search'
 
 export default function Products() {
-  const [originalProducts, setOriginalProducts] = useState([])
   const [products, setProducts] = useState([])
   const [limit, setLimit] = useState(4)
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [hasMore, setHasMore] = useState(true)
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     const fetchData = async (limit, selectedCategory) => {
@@ -20,29 +20,35 @@ export default function Products() {
         const allProdResponse = await fetch(apiUrl)
         const allProdJson = await allProdResponse.json()
 
-        setOriginalProducts(allProdJson)
+        if (searchQuery !== '') {
+          const filteredProducts = allProdJson.filter((product) => {
+            return product.title.toLowerCase().includes(searchQuery)
+          })
+          setProducts(filteredProducts)
+          setHasMore(false)
+        } else {
+          if (selectedCategory && selectedCategory !== null) {
+            apiUrl += `/category/${selectedCategory}`
+          }
+          apiUrl += `?limit=${limit}`
 
-        if (selectedCategory && selectedCategory !== null) {
-          apiUrl += `/category/${selectedCategory}`
+          const response = await fetch(apiUrl)
+          const json = await response.json()
+
+          const totalCount = await fetchTotalCount(selectedCategory)
+
+          const displayedProducts = json.slice(0, limit)
+          setProducts(displayedProducts) // Slice the array to display only the required number of products
+
+          setHasMore(totalCount > displayedProducts.length) // Set hasMore based on whether there are more products available
         }
-        apiUrl += `?limit=${limit}`
-
-        const response = await fetch(apiUrl)
-        const json = await response.json()
-
-        const totalCount = await fetchTotalCount(selectedCategory)
-
-        const displayedProducts = json.slice(0, limit)
-        setProducts(displayedProducts) // Slice the array to display only the required number of products
-
-        setHasMore(totalCount > displayedProducts.length) // Set hasMore based on whether there are more products available
       } catch (err) {
         console.log(err)
       }
     }
 
     fetchData(limit, selectedCategory)
-  }, [limit, selectedCategory])
+  }, [limit, selectedCategory, searchQuery])
 
   useEffect(() => {
     getAllCategories()
@@ -85,16 +91,9 @@ export default function Products() {
     setLimit(4) // Reset limit when a new category is selected to start from the beginning
   }
 
-  const handleSearch = (e) => {
-    const searchValue = e.target.value.toLowerCase()
-    if (searchValue === '') {
-      setProducts(originalProducts)
-    } else {
-      const filteredProducts = originalProducts.filter((product) =>
-        product.title.toLowerCase().includes(searchValue)
-      )
-      setProducts(filteredProducts)
-    }
+  const handleSearch = (event) => {
+    const searchValue = event.target.value.toLowerCase()
+    setSearchQuery(searchValue)
   }
 
   return (
