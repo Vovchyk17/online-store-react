@@ -96,6 +96,24 @@ export default function Products() {
     setSearchQuery(searchValue)
   }
 
+  const handleSearchProductExist = () => {
+    if (products.length === 0) {
+      return (
+        <h3 className="mt-24 text-center text-xl font-bold">
+          No products found!
+        </h3>
+      )
+    } else {
+      return (
+        <div className="grid grid-cols-1 gap-8 min-[540px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {products.map((product) => (
+            <ProductsItem product={product} key={`product_${product.id}`} />
+          ))}
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="products container">
       <h2 className="mb-16 text-center text-4xl font-bold">Products</h2>
@@ -107,11 +125,7 @@ export default function Products() {
         />
         <Search handleSearch={handleSearch} />
       </div>
-      <div className="grid grid-cols-1 gap-8 min-[540px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
-          <ProductsItem product={product} key={`product_${product.id}`} />
-        ))}
-      </div>
+      {handleSearchProductExist()}
       {hasMore && <LoadMore handleLoadMore={handleLoadMore} />}
     </div>
   )
