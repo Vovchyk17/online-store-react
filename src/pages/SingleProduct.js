@@ -30,7 +30,7 @@ export default function SingleProduct() {
       <div className="container max-w-screen-lg">
         <div className="mb-8">
           <Link
-            to="/online-store-react"
+            to="/"
             className="flex items-center justify-start text-lg font-bold hover:text-blue-800"
           >
             <IoIosArrowRoundBack className=" mr-2 h-8 w-8" />
