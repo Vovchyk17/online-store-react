@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { CartContext } from '../context/CartContext'
+import { Link } from 'react-router-dom'
 
 export default function SingleProduct() {
   const { productId } = useParams()
@@ -28,13 +29,13 @@ export default function SingleProduct() {
     <div className="single_product">
       <div className="container max-w-screen-lg">
         <div className="mb-8">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="flex items-center justify-start text-lg font-bold hover:text-blue-800"
           >
             <IoIosArrowRoundBack className=" mr-2 h-8 w-8" />
             Back to home page
-          </a>
+          </Link>
         </div>
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           <div className="flex items-center justify-center overflow-hidden rounded-lg border-2 border-black bg-white px-4 py-8">
