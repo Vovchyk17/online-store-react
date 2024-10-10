@@ -15,4 +15,11 @@ body {
 }
 .button:hover, .button.selected {
   @apply bg-gray-800;
+}
+
+form label {
+  @apply block text-sm text-black;
+}
+form input[type=text], form input[type=email] {
+  @apply h-10 w-full rounded-md border border-black px-2 text-black;
 }/*# sourceMappingURL=App.css.map */

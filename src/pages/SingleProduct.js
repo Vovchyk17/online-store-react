@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { IoIosArrowRoundBack } from 'react-icons/io'
+import { CartContext } from '../context/CartContext'
 
 export default function SingleProduct() {
   const { productId } = useParams()
   const [product, setProduct] = useState(null)
+
+  const { addToCart } = useContext(CartContext)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,7 +52,9 @@ export default function SingleProduct() {
             </p>
             <div className="flex flex-wrap items-center justify-between">
               <div className="text-4xl font-bold">${product?.price}</div>
-              <button className="button">Add to cart</button>
+              <button className="button" onClick={() => addToCart(product)}>
+                Add to cart
+              </button>
             </div>
           </div>
         </div>

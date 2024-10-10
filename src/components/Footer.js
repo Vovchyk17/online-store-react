@@ -7,7 +7,7 @@ export default function Footer() {
           <a
             href="https://www.linkedin.com/in/volodymyr-senyk-306088152/"
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
           >
             Volodymyr Senyk
           </a>
