@@ -7,29 +7,32 @@ import Footer from './components/Footer'
 import HeroSection from './components/HeroSection'
 import Products from './components/Products'
 import SingleProduct from './pages/SingleProduct'
+import { CartProvider } from './context/CartContext' // Import CartProvider
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <main className="flex-1 pb-24 pt-12">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <HeroSection />
-                  <Products />
-                </>
-              }
-            />
-            <Route path="/products/:productId" element={<SingleProduct />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <CartProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <main className="flex-1 pb-24 pt-12">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <HeroSection />
+                    <Products />
+                  </>
+                }
+              />
+              <Route path="/products/:productId" element={<SingleProduct />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </CartProvider>
   )
 }
 

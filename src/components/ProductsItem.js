@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 export default function ProductsItem({ product }) {
+  const { addToCart } = useContext(CartContext)
+
   return (
     <div className="products_item" key={product.id}>
       <figure className="mb-6 flex items-center justify-center overflow-hidden rounded-lg border-2 border-black bg-white px-4 py-8">
@@ -20,7 +24,9 @@ export default function ProductsItem({ product }) {
       </h3>
       <div className="flex flex-wrap items-center justify-between">
         <span className="text-xl font-bold">${product.price}</span>
-        <button className="button">Add to cart</button>
+        <button className="button" onClick={() => addToCart(product)}>
+          Add to cart
+        </button>
       </div>
     </div>
   )
