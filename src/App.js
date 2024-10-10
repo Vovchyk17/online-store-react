@@ -12,7 +12,7 @@ import { CartProvider } from './context/CartContext' // Import CartProvider
 function App() {
   return (
     <CartProvider>
-      <Router>
+      <Router basename="/online-store-react">
         <div className="App">
           <Header />
           <main className="flex-1 pb-24 pt-12">
